@@ -12,7 +12,7 @@ const Header = () => {
                 <img src={assets.group_profiles} alt="" />
                 <p>Simply browse through our extensive list of trusted doctors, <br /> shedule your appointment hassle-free.</p>
             </div>
-            <a href="">
+            <a href="#speciality">
                 Book appointment <img src={assets.arrow_icon} alt="" />
             </a>
         </div>

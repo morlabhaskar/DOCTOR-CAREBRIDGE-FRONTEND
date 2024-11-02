@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {assets} from "../assets/assets_frontend/assets"
+import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
     const navigate = useNavigate()
     
-    const [token,setToken] = useState(true)
+    const {token,setToken,userData} = useContext(AppContext) 
+
+    // const [token,setToken] = useState(true)
     const [showMenu,setShowMenu] = useState(false)
 
     const HandleLogout = () => {
         setToken(false)
-        navigate('/')
+        localStorage.removeItem('token')
 
     }
 
@@ -38,16 +41,16 @@ const Navbar = () => {
             </ul>
             <div className='flex items-center gap-4'>
                 {
-                    token?
+                    token && userData ?
                         <div className='flex items-center gap-2 cursor-pointer group relative'>
-                            <img className='rounded-full w-8' src={assets.profile_pic} alt="" />
+                            <img className='rounded-full w-8' src={userData.image} alt="" />
                             <img className='w-2.5' src={assets.dropdown_icon} alt="" />
                             <div className='absolute top-0 -left-28 pt-14 text-base font-medium text-grey-600 z-20 hidden group-hover:block '>
                                 <div className='bg-gray-100 min-w-44 rounded flex flex-col gap-4 p-4'>
                                     <p onClick={()=>navigate('/my-profile')} className='text-slate-500 hover:text-black cursor-pointer'>My Profile</p>
                                     <p onClick={()=>navigate('/my-appointments')} className='text-slate-500 hover:text-black cursor-pointer'>My Appointments</p>
                                     {/* <p onClick={()=>setToken(false)} className='text-slate-500 hover:text-black cursor-pointer'>Logout</p> */}
-                                    <p onClick={()=>HandleLogout()} className='text-slate-500 hover:text-black cursor-pointer'>Logout</p>
+                                    <p onClick={HandleLogout} className='text-slate-500 hover:text-black cursor-pointer'>Logout</p>
                                 </div>
                             </div>
                         </div>

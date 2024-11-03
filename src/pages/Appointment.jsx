@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
@@ -26,6 +27,23 @@ const Appointment = () => {
     setDocInfo(docInfo)
     console.log(docInfo)
   }
+
+
+    // Fetch booked slots from backend
+  //  const fetchBookedSlots = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${backendUrl}/api/user/booked-slots/${docId}`)
+  //     if (data.success) {
+  //       setBookedSlots(data.bookedSlots) // Assume bookedSlots is an array of ISO strings of booked datetimes
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message)
+  //     toast.error("Failed to fetch booked slots.")
+  //   }
+  // }
+
+
+
   const getAvailableSlots = async () => {
     setDocSlots([])
 
@@ -118,6 +136,10 @@ const Appointment = () => {
     fetchDocInfo()
   },[doctors,docId])
 
+   // useEffect(() => {
+  //   fetchBookedSlots()
+  // }, [docId])
+
   useEffect(()=>{
     getAvailableSlots()
   },[docInfo])
@@ -190,3 +212,5 @@ const Appointment = () => {
 }
 
 export default Appointment
+
+

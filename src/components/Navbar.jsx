@@ -19,8 +19,14 @@ const Navbar = () => {
 
 
     return (
-        <div className='bg-gray-200 flex justify-between items-center p-2 text-sm'>
-            <h1 onClick={()=>navigate('/')} className='cursor-pointer'>Doctor</h1>
+        <div className='flex justify-between items-center py-5 px-2 text-sm rounded-sm border-slate-500 border-solid border-b-4'>
+            {/* <h1 onClick={()=>navigate('/')} className='cursor-pointer'>Doctor</h1> */}
+            <div onClick={()=>navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
+            <a href="#" className="flex items-center">
+              <img src={assets.logo1} className="h-8 me-3 mt-1" alt="FlowBite Logo" />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Prescript</span>
+            </a>
+            </div>
             <ul className='hidden md:flex items-start gap-5 font-medium'>
                 <NavLink to="/">
                     <li>HOME</li>

@@ -4,7 +4,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const MyAppointments = () => {
-
+  const [load,setLoad] = useState(true)    
   const {backendUrl,token,getDoctorsData} = useContext(AppContext)
 
   const [appointments,setAppointments] = useState([])
@@ -23,6 +23,7 @@ const MyAppointments = () => {
       if(data.success){
         setAppointments(data.appointments.reverse())
         console.log(data.appointments)
+        setLoad(false)
       }
 
     } catch (error) {
@@ -59,7 +60,7 @@ const MyAppointments = () => {
   return (
     <div>
       <p className='pb-3 mt-12 font-medium text-zinc-700 border-b'>My appointments</p>
-      <div>
+      {load ? <p>Loading...</p> :<div>
         {/* {appointments.slice(0,3).map((item,index)=>( */}
         {appointments.map((item,index)=>(
           <div className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b' key={index}>
@@ -76,7 +77,7 @@ const MyAppointments = () => {
             </div>
             <div></div>
             <div className='flex flex-col gap-2 justify-end'>
-              {!item.cancelled && <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>}
+              {/* {!item.cancelled && <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>} */}
               {
                 !item.cancelled && 
                   <button onClick={()=>cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white transition-all duration-300'>Cancel appointment</button> ?
@@ -86,7 +87,7 @@ const MyAppointments = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   )
 }

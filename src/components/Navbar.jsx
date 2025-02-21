@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { assets } from "../assets/assets_frontend/assets"
 import { AppContext } from '../context/AppContext'
 
+
 const Navbar = () => {
     const navigate = useNavigate()
 
@@ -23,8 +24,8 @@ const Navbar = () => {
             {/* <h1 onClick={()=>navigate('/')} className='cursor-pointer'>Doctor</h1> */}
             <div onClick={() => navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
                 <a href="#" className="flex items-center">
-                    <img src={assets.logo1} className="h-8 me-3 mt-1" alt="FlowBite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Prescript</span>
+                    <img src={assets.logo1} className="h-8 me-3 mt-1 border-[2px] border-teal-600 rounded-b-full" alt="FlowBite Logo" />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Prescript</span>
                 </a>
             </div>
             <ul className='hidden md:flex items-start gap-5 font-medium'>

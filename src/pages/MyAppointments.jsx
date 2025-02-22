@@ -58,8 +58,8 @@ const MyAppointments = () => {
   },[token])
 
   return (
-    <div>
-      <p className='pb-3 mt-12 font-medium text-zinc-700 border-b'>My appointments</p>
+    <div className='my-4'>
+      <h1 className='pb-3 font-bold text-primary border-b text-xl'>My appointments</h1>
       {load ? <p>Loading...</p> :<div>
         {/* {appointments.slice(0,3).map((item,index)=>( */}
         {appointments.map((item,index)=>(

@@ -3,27 +3,38 @@ import {assets} from "../assets/assets_frontend/assets"
 
 const Footer = () => {
   return (
-    // <footer className=" border-slate-900 border-solid border-[2px] rounded-lg">
     <footer className="rounded-lg border-4 border-transparent bg-gradient-to-br from-teal-600 via-black via-purple-500 to-pink-500 ">
       <div className="bg-white rounded-md mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            <a href="#" className="flex items-center">
-              <img src={assets.logo1} className="h-8 me-3" alt="FlowBite Logo" />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Prescript</span>
-            </a>
-          </div>
+          <div onClick={() => navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
+                <a href="#" className="flex items-center">
+                    <img src={assets.logo1} className="h-8 me-3 mt-1 border-[2px] border-teal-600 rounded-b-full" alt="FlowBite Logo" />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Prescript</span>
+                </a>
+            </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              {/* <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Resources</h2>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Specialities</h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
+                  <a href="https://flowbite.com/" className="hover:underline">General physician</a>
                 </li>
-                <li>
-                  <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
+                <li className="mb-4">
+                  <a href="https://tailwindcss.com/" className="hover:underline">Gynecologist</a>
                 </li>
-              </ul> */}
+                <li className="mb-4">
+                  <a href="https://tailwindcss.com/" className="hover:underline">Dermatologist</a>
+                </li>
+                <li className="mb-4">
+                  <a href="https://tailwindcss.com/" className="hover:underline">Pediatricians</a>
+                </li>
+                <li className="mb-4">
+                  <a href="https://tailwindcss.com/" className="hover:underline">Neurologist</a>
+                </li>
+                <li className="mb-4">
+                  <a href="https://tailwindcss.com/" className="hover:underline">Gastroenterologist</a>
+                </li>
+              </ul>
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Follow us</h2>

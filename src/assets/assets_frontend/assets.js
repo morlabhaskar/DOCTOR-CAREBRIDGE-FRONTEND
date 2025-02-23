@@ -2,6 +2,7 @@ import appointment_img from './appointment_img.png'
 import header_img from './header_img.png'
 import header2_img from './header2_img.jpg'
 import logo1 from './logo.png'
+import nodata from './no-data.avif'
 import error from './error.jpeg'
 import group_profiles from './group_profiles.png'
 import profile_pic from './profile_pic.png'
@@ -46,6 +47,7 @@ export const assets = {
     header_img,
     header2_img,
     group_profiles,
+    nodata,
     logo,
     error,
     logo1,

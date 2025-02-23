@@ -3,12 +3,12 @@ import { assets } from '../assets/assets_frontend/assets'
 
 const Contact = () => {
   return (
-    <div>
+    <div className="container mx-auto px-4 py-10">
       <div className='flex flex-col md:flex-row flex-wrap my-3'>
         <div className='md:w-1/2 flex-col align-center justify-start'>
-          <img className='h-100 rounded-r-full' src={assets.contact_image} alt="" />
+          <img className='h-80 rounded-r-full' src={assets.contact_image} alt="" />
         </div>
-        <div className='md:w-1/2 p-4 flex flex-col justify-center'>
+        <div className='md:w-1/2 p-4 flex flex-col justify-center dark:bg-whi dark:rounded-2xl'>
           <h1 className='text-[50px] font-bold'>Contact Us</h1>
           <p className='w-full my-2'>
             <p className='text-md'>Name</p>
@@ -32,22 +32,23 @@ const Contact = () => {
         </div>
       </div>
       <div className='w-full flex flex-col justify-between gap-4 my-4 px-5 py-2 md:flex-row'>
-        <div className='bg-teal-600 text-white w-full p-3 rounded-lg'>
-          <h1 className='text-lg font-bold'>CALL US</h1>
-          <p className='text-sm text-slate-300'>+91 9327530262</p>
+        <div className='bg-teal-600 text-white w-full p-3 rounded-lg dark:bg-dar dark:border'>
+          <h1 className='text-lg font-bold dark:text-whi'>CALL US</h1>
+          <p className='text-sm text-slate-300 dark:text-whi2'>+91 9327530262</p>
         </div>
-        <div className='bg-teal-600 text-white w-full p-3 rounded-lg'>
-          <h1 className='text-lg font-bold'>LOCATION</h1>
-          <p className='text-sm text-slate-300'>Road No:62,Kachiguda</p>
-          <p className='text-sm text-slate-300'>Hyderabad</p>
+        <div className='bg-teal-600 text-white w-full p-3 rounded-lg dark:bg-dar dark:border'>
+          <h1 className='text-lg font-bold dark:text-whi'>LOCATION</h1>
+          <p className='text-sm text-slate-300 dark:text-whi2'>Road No:62,Kachiguda</p>
+          <p className='text-sm text-slate-300 dark:text-whi2'>Hyderabad</p>
         </div>
-        <div className='bg-teal-600 text-white w-full p-3 rounded-lg'>
-          <h1 className='text-lg font-bold'>HOURS</h1>
-          <p className='text-sm text-slate-300'>Mon-Fri.... 10 AM - 07 PM</p>
-          <p className='text-sm text-slate-300'>Sat,Sun.... 08 AM - 06 PM</p>
+        <div className='bg-teal-600 text-white w-full p-3 rounded-lg dark:bg-dar dark:border'>
+          <h1 className='text-lg font-bold dark:text-whi'>HOURS</h1>
+          <p className='text-sm text-slate-300 dark:text-whi2'>Mon-Fri.... 10 AM - 07 PM</p>
+          <p className='text-sm text-slate-300 dark:text-whi2'>Sat,Sun.... 08 AM - 06 PM</p>
         </div>
       </div>
     </div>
+
   )
 }
 

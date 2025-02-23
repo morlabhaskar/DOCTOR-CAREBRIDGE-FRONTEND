@@ -4,63 +4,63 @@ import {assets} from "../assets/assets_frontend/assets"
 const Footer = () => {
   return (
     <footer className="rounded-lg border-4 border-transparent bg-gradient-to-br from-teal-600 via-black via-purple-500 to-pink-500 ">
-      <div className="bg-white rounded-md mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div className="bg-white rounded-md mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 dark:bg-dar">
         <div className="md:flex md:justify-between">
           <div onClick={() => navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
                 <a href="#" className="flex items-center">
                     <img src={assets.logo1} className="h-8 me-3 mt-1 border-[2px] border-teal-600 rounded-b-full" alt="FlowBite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Prescript</span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">CareBridge</span>
                 </a>
             </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Specialities</h2>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-whi">Specialities</h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">General physician</a>
+                  <a href="https://flowbite.com/" className="hover:underline dark:text-whi2">General physician</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">Gynecologist</a>
+                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Gynecologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">Dermatologist</a>
+                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Dermatologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">Pediatricians</a>
+                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Pediatricians</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">Neurologist</a>
+                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Neurologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">Gastroenterologist</a>
+                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Gastroenterologist</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Follow us</h2>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-whi">Follow us</h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://github.com/morlabhaskar" target='blank' className="hover:underline ">Github</a>
+                  <a href="https://github.com/morlabhaskar" target='blank' className="hover:underline dark:text-whi2">Github</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://www.linkedin.com/in/morla-bhaskar-goud-429738258/" target='blank' className="hover:underline">Linkedin</a>
+                  <a href="https://www.linkedin.com/in/morla-bhaskar-goud-429738258/" target='blank' className="hover:underline dark:text-whi2">Linkedin</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://www.instagram.com/bhaskarnani073/" target='blank' className="hover:underline">Instagram</a>
+                  <a href="https://www.instagram.com/bhaskarnani073/" target='blank' className="hover:underline dark:text-whi2">Instagram</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://x.com/Bhaskar_nani073" target='blank' className="hover:underline">Twitter</a>
+                  <a href="https://x.com/Bhaskar_nani073" target='blank' className="hover:underline dark:text-whi2">Twitter</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Legal</h2>
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-whi">Legal</h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">Privacy Policy</a>
+                  <a href="#" className="hover:underline dark:text-whi2">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                  <a href="#" className="hover:underline dark:text-whi2">Terms &amp; Conditions</a>
                 </li>
               </ul>
             </div>

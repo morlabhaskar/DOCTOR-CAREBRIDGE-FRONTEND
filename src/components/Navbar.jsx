@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { assets } from "../assets/assets_frontend/assets"
 import { AppContext } from '../context/AppContext'
@@ -9,8 +9,26 @@ const Navbar = () => {
 
     const { token, setToken, userData } = useContext(AppContext)
 
-    // const [token,setToken] = useState(true)
     const [showMenu, setShowMenu] = useState(false)
+
+    // Dark mode state is initialized from localStorage (if any)
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return localStorage.getItem('darkMode') === 'true'
+    })
+
+    // When dark mode state changes, update the root element class and localStorage
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+        localStorage.setItem('darkMode', isDarkMode)
+    }, [isDarkMode])
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(prevMode => !prevMode)
+    }
 
     const HandleLogout = () => {
         setToken(false)
@@ -20,12 +38,12 @@ const Navbar = () => {
 
 
     return (
-        <div className='flex justify-between items-center py-5 px-2 text-sm rounded-sm border-slate-500 border-solid border-b-4'>
+        <div className='flex justify-between items-center py-5 px-2 text-sm rounded-sm border-slate-500 border-solid border-b-4 dark:bg-dar dark:text-white '>
             {/* <h1 onClick={()=>navigate('/')} className='cursor-pointer'>Doctor</h1> */}
             <div onClick={() => navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
                 <a href="#" className="flex items-center">
                     <img src={assets.logo1} className="h-8 me-3 mt-1 border-[2px] border-teal-600 rounded-b-full" alt="FlowBite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Prescript</span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">CareBridge</span>
                 </a>
             </div>
             <ul className='hidden md:flex items-start gap-5 font-medium'>
@@ -56,7 +74,20 @@ const Navbar = () => {
                                 <div className='bg-gray-100 min-w-44 rounded flex flex-col gap-4 p-4'>
                                     <p onClick={() => navigate('/my-profile')} className='text-slate-500 hover:text-black cursor-pointer'>My Profile</p>
                                     <p onClick={() => navigate('/my-appointments')} className='text-slate-500 hover:text-black cursor-pointer'>My Appointments</p>
-                                    {/* <p onClick={()=>setToken(false)} className='text-slate-500 hover:text-black cursor-pointer'>Logout</p> */}
+                                    <p className='flex gap-2'>
+                                        <label htmlFor="toggleDarkMode" className="relative inline-block w-12 h-6 cursor-pointer items-center">
+                                            <input
+                                                id="toggleDarkMode"
+                                                type="checkbox"
+                                                className="sr-only peer"
+                                                checked={isDarkMode}
+                                                onChange={toggleDarkMode}
+                                            />
+                                            <div className="w-full h-full bg-gray-200 dark:bg-gray-600 rounded-full peer-focus:ring-2 peer-focus:ring-blue-300 transition-colors duration-300"></div>
+                                            <div className="absolute left-1 top-1 bg-white dark:bg-gray-200 w-4 h-4 rounded-full transition-transform duration-300 transform peer-checked:translate-x-6"></div>
+                                        </label>
+                                        <p>{isDarkMode ? <p className='text-slate-500'>Light</p> : <p className='text-slate-500'>Dark</p>}</p>
+                                    </p>
                                     <p onClick={HandleLogout} className='text-slate-500 hover:text-black cursor-pointer'>Logout</p>
                                 </div>
                             </div>
@@ -64,6 +95,7 @@ const Navbar = () => {
                         :
                         <button onClick={() => navigate('/login')} className='cursor-pointer'>Create Account</button>
                 }
+                {/* <button onClick={() => navigate('/login')} className='cursor-pointer'>Create Account</button> */}
                 <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
                 {/* Mobile Menu */}
                 <div className={`${showMenu ? 'fixed w-full' : 'h-0 w-0'} md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>

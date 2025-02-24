@@ -93,7 +93,7 @@ const Navbar = () => {
                             </div>
                         </div>
                         :
-                        <button onClick={() => navigate('/login')} className='cursor-pointer'>Create Account</button>
+                        <button onClick={() => navigate('/login')} className='cursor-pointer bg-primary px-5 py-2 text-whi rounded-full hover:bg-teal-800 hover:scale-105 transition-all duration-300'>Create Account</button>
                 }
                 {/* <button onClick={() => navigate('/login')} className='cursor-pointer'>Create Account</button> */}
                 <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />

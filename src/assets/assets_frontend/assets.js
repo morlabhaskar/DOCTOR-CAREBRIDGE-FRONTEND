@@ -1,6 +1,8 @@
 import appointment_img from './appointment_img.png'
 import header_img from './header_img.png'
 import header2_img from './header2_img.jpg'
+import login_banner from './login-banner.png'
+import google from './google-icon.svg'
 import logo1 from './logo.png'
 import nodata from './no-data.avif'
 import error from './error.jpeg'
@@ -70,7 +72,9 @@ export const assets = {
     dropdown_icon,
     upload_icon,
     stripe_logo,
-    razorpay_logo
+    razorpay_logo,
+    login_banner,
+    google
 }
 
 export const specialityData = [

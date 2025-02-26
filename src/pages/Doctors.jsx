@@ -138,7 +138,7 @@ const Doctors = () => {
         <img className='h-72' src={assets.nodata} alt="" />
       </div>
       ) : (
-        <div className='bg-red-100'>
+        <div className=''>
           {filterDoc.map((item, index) => (
             <div key={index} className='flex my-2 bg-whi dark:bg-dar rounded-lg'>
               <img className='min-h-48 max-h-48 min-w-40 max-w-40 object-contain border border-slate-600 rounded-l-lg dark:border-slate-300' src={item.image} alt="" />

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, NavLink, json } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets_frontend/assets'
 import { AppContext } from '../context/AppContext'
 import { toast } from 'react-toastify'
@@ -10,6 +10,18 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
 import { BsPatchCheckFill } from "react-icons/bs";
 import { BarChart } from '@mui/x-charts/BarChart';
+
+
+// "use client"
+import { Label, Pie, PieChart, Sector } from "recharts";
+
+import { Card, CardContent, CardHeader} from "@/components/ui/card";
+import { ChartContainer, ChartStyle, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+
+
+
 
 const MyProfile = () => {
 
@@ -82,6 +94,40 @@ const MyProfile = () => {
   const gastroenterologist = doctors.filter(doc => doc.speciality === "Gastroenterologist").length;
 
 
+  //using shadcn
+
+  const desktopData = [
+    { month: "january", desktop: generalPhysicians, fill: "#21EBEB" },
+    { month: "february", desktop: gynecologist, fill: "#31C34C" },
+    { month: "march", desktop: dermatologist, fill: "#4631C3" },
+    { month: "april", desktop: pediatricians, fill: "#D03464" },
+    { month: "may", desktop: neurologist, fill: "#B45CB5" },
+    { month: "june", desktop: gastroenterologist, fill: "#F27543" },
+  ];
+
+  const chartConfig = {
+    visitors: { label: "Visitors" },
+    desktop: { label: "Desktop" },
+    mobile: { label: "Mobile" },
+    january: { label: "General physician", color: "#21EBEB" },
+    february: { label: "Gynecologist", color: "#31C34C" },
+    march: { label: "Dermatologist", color: "#4631C3" },
+    april: { label: "Pediatricians", color: "#D03464" },
+    may: { label: "Neurologist", color: "#B45CB5" },
+    may: { label: "Gastroenterologist", color: "#F27543" },
+  };
+
+  const id = "pie-interactive";
+  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month);
+
+  const activeIndex = React.useMemo(
+    () => desktopData.findIndex((item) => item.month === activeMonth),
+    [activeMonth]
+  );
+
+  const months = React.useMemo(() => desktopData.map((item) => item.month), []);
+
+
 
   useEffect(() => {
     console.log(userData)
@@ -133,7 +179,7 @@ const MyProfile = () => {
                     </div>
                     <div className={`flex items-center justify-center md:justify-start dark:hover:bg-slate-800 gap-2 hover:bg-slate-300 px-3 py-2 cursor-pointer ${activeTab === 'mystates' ? 'border-l-4 border-primary bg-slate-200 dark:bg-slate-700' : ''}`} onClick={() => setActiveTab('mystates')}>
                       <GoGraph className='text-primary text-md' />
-                      <p className='text-dar hidden md:block hover:text-blue-600 text-md dark:text-whi'>My States</p>
+                      <p className='text-dar hidden md:block hover:text-blue-600 text-md dark:text-whi'>Statistics</p>
                     </div>
                     <NavLink className='flex items-center justify-center md:justify-start dark:hover:bg-slate-800 gap-2 hover:bg-slate-300 px-3 py-2 cursor-pointer' to={'/my-appointments'}>
                       <FaUserDoctor className='text-primary text-md' />
@@ -242,61 +288,106 @@ const MyProfile = () => {
 
                 {
                   activeTab === 'mystates' && (
-                    <div className='flex-col gap-2 text-sm bg-green-100 w-5/6 '>
-                      <BarChart
-                        xAxis={[{
-                          scaleType: 'band',
-                          data: ['General physician', 'Gynecologist', 'Dermatologist', 'Pediatricians', 'Neurologist', 'Gastroenterologist'],
-                          tickLabelStyle: { fontSize: 12, angle: -20 }, // Rotates labels for better spacing
-                          padding: 0.5 // Adds space on the left & right of the axis
-                        }]}
-                        series={[{
-                          data: [generalPhysicians, gynecologist, dermatologist, pediatricians, neurologist, gastroenterologist],
-                          itemStyles: [
-                            { color: '#ff5733' },
-                            { color: '#33ff57' },
-                            { color: '#3357ff' },
-                            { color: '#ff33a8' },
-                            { color: '#a833ff' },
-                            { color: '#33fff6' }
-                          ]
-                        }]}
-                        width={600} // Increase width for better spacing
-                        height={300}
-                        barCategoryGap={30} // Increase space between bars
-                        barGap={10} // Space between bars in a group
-                      />
+                    <div className='flex-col gap-2 text-sm w-5/6 '>
+                      <div className='md:flex p-2 gap-2'>
+                        <div className=' p-2 flex w-full items-center h-[300px] dark:bg-slate-700 rounded-2xl'>
+                          <BarChart className=''
+                            xAxis={[{
+                              scaleType: 'band',
+                              data: ['General physician', 'Gynecologist', 'Dermatologist', 'Pediatricians', 'Neurologist', 'Gastroenterologist'],
+                              // tickLabelStyle: { fontSize: 12, angle: -20 }, // Rotates labels for better spacing
+                              padding: 0.5, // Adds space on the left & right of the axis
+                              // hide: true,
+                              axisLine: false,
+                              tick: { fill: 'transparent', opacity: 0 },
+                              // tick={{  }}
 
-                      <p>
-                        <span>Doctors :</span>
-                        <span>{doctors.length}</span>
-                      </p>
-                      <p>
-                        <span>General physicia :</span>
-                        <span>{generalPhysicians}</span>
-                      </p>
-                      <p>
-                        <span>Gynecologist :</span>
-                        <span>{gynecologist}</span>
-                      </p>
+                            }]}
+                            series={[{
+                              data: [generalPhysicians, gynecologist, dermatologist, pediatricians, neurologist, gastroenterologist],
+                              itemStyles: [
+                                { color: '#ff5733' },
+                                { color: '#33ff57' },
+                                { color: '#3357ff' },
+                                { color: '#ff33a8' },
+                                { color: '#a833ff' },
+                                { color: '#33fff6' }
+                              ]
+                            }]}
+                            width={400} // Increase width for better spacing
+                            height={250}
+                            barCategoryGap={30} // Increase space between bars
+                            barGap={10} // Space between bars in a group
+                          />
+                        </div>
+                        <Card data-chart={id} className="flex flex-col border-none w-full h-[300px] dark:bg-slate-700 rounded-2xl">
+                          <ChartStyle id={id} config={chartConfig} />
+                          <CardHeader className="flex-row items-start space-y-0 pb-0">
+                            <Select value={activeMonth} onValueChange={setActiveMonth}>
+                              <SelectTrigger className="ml-auto h-7 w-[170px] rounded-lg pl-2.5" aria-label="Select a value">
+                                <SelectValue placeholder="Select month" />
+                              </SelectTrigger>
+                              <SelectContent align="end" className="rounded-xl">
+                                {months.map((key) => {
+                                  const config = chartConfig[key];
+                                  if (!config) return null;
+                                  return (
+                                    <SelectItem key={key} value={key} className="rounded-lg [&_span]:flex">
+                                      <div className="flex items-center gap-2 text-xs">
+                                        <span
+                                          className="flex h-3 w-3 shrink-0 rounded-sm"
+                                          style={{ backgroundColor: `var(--color-${key})` }}
+                                        />
+                                        {config.label}
+                                      </div>
+                                    </SelectItem>
+                                  );
+                                })}
+                              </SelectContent>
+                            </Select>
+                          </CardHeader>
+                          <CardContent className="flex flex-1 justify-center pb-0">
+                            <ChartContainer id={id} config={chartConfig} className="mx-auto aspect-square w-full max-w-[250px]">
+                              <PieChart>
+                                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                                <Pie
+                                  data={desktopData}
+                                  dataKey="desktop"
+                                  nameKey="month"
+                                  innerRadius={60}
+                                  strokeWidth={5}
+                                  activeIndex={activeIndex}
+                                  activeShape={({ outerRadius = 0, ...props }) => (
+                                    <g>
+                                      <Sector {...props} outerRadius={outerRadius + 10} />
+                                      <Sector {...props} outerRadius={outerRadius + 25} innerRadius={outerRadius + 12} />
+                                    </g>
+                                  )}
+                                >
+                                  <Label
+                                    content={({ viewBox }) => {
+                                      if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                                        return (
+                                          <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
+                                            <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
+                                              {/* {desktopData[activeIndex].desktop.toLocaleString()} */}
+                                              {doctors.length}
+                                            </tspan>
+                                            <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
+                                              Doctors
+                                            </tspan>
+                                          </text>
+                                        );
+                                      }
+                                    }}
+                                  />
+                                </Pie>
+                              </PieChart>
+                            </ChartContainer>
+                          </CardContent>
+                        </Card>
+                      </div>
 
-
-                      <p>
-                        <span>Dermatologist :</span>
-                        <span>{dermatologist}</span>
-                      </p>
-                      <p>
-                        <span>Pediatricians :</span>
-                        <span>{pediatricians}</span>
-                      </p>
-                      <p>
-                        <span>Neurologist :</span>
-                        <span>{neurologist}</span>
-                      </p>
-                      <p>
-                        <span>Gastroenterologist :</span>
-                        <span>{gastroenterologist}</span>
-                      </p>
 
                     </div>
                   )

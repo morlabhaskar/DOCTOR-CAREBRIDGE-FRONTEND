@@ -17,6 +17,7 @@ const AppContextProvider = (props) => {
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
     const [userData, setUserData] = useState(false)
+    const [load, setLoad] = useState(true)
 
 
 
@@ -43,6 +44,7 @@ const AppContextProvider = (props) => {
 
             if (data.success) {
                 setUserData(data.userData)
+                setLoad(false)
             }
             else {
                 toast.error(data.message)
@@ -64,6 +66,8 @@ const AppContextProvider = (props) => {
         userData,
         setUserData,
         loadUserProfileData,
+        setLoad,
+        load
     }
 
     useEffect(() => {

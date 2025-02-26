@@ -4,6 +4,8 @@ import header2_img from './header2_img.jpg'
 import login_banner from './login-banner.png'
 import google from './google-icon.svg'
 import logo1 from './logo.png'
+import profilebg from './profile-bg.avif'
+import profilebg2 from './profile-bg2.avif'
 import nodata from './no-data.avif'
 import error from './error.jpeg'
 import group_profiles from './group_profiles.png'
@@ -74,7 +76,9 @@ export const assets = {
     stripe_logo,
     razorpay_logo,
     login_banner,
-    google
+    google,
+    profilebg,
+    profilebg2
 }
 
 export const specialityData = [

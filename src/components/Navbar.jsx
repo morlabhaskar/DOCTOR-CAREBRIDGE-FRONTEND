@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { assets } from "../assets/assets_frontend/assets"
 import { AppContext } from '../context/AppContext'
+import { MdOutlineSupervisorAccount } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -41,10 +42,10 @@ const Navbar = () => {
         <div className='flex justify-between items-center py-5 px-2 text-sm rounded-sm border-slate-500 border-solid border-b-4 dark:bg-dar dark:text-white '>
             {/* <h1 onClick={()=>navigate('/')} className='cursor-pointer'>Doctor</h1> */}
             <div onClick={() => navigate('/')} className="mb-6 md:mb-0 cursor-pointer">
-                <a href="#" className="flex items-center">
+                <div className="flex items-center">
                     <img src={assets.logo1} className="h-8 me-3 mt-1 border-[2px] border-teal-600 rounded-b-full" alt="FlowBite Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">CareBridge</span>
-                </a>
+                </div>
             </div>
             <ul className='hidden md:flex items-start gap-5 font-medium'>
                 <NavLink to="/">
@@ -68,9 +69,12 @@ const Navbar = () => {
                 {
                     token && userData ?
                         <div className='flex items-center gap-2 cursor-pointer group relative'>
-                            <img className='rounded-full w-8' src={userData.image} alt="" />
-                            <img className='w-2.5' src={assets.dropdown_icon} alt="" />
-                            <div className='absolute top-0 -left-28 pt-14 text-base font-medium text-grey-600 z-20 hidden group-hover:block '>
+                            <div className='flex items-center gap-2 bg-slate-200 dark:bg-dar2 px-2 py-1 rounded-full'>
+                                <img className='rounded-full w-8 h-8' src={userData.image} alt="" />
+                                <p className='text-sm'>{userData.name}</p>
+                                <img className='w-2.5' src={assets.dropdown_icon} alt="" />
+                            </div>
+                            <div className='absolute top-0 -left- pt-14 text-base font-medium text-grey-600 z-20 hidden group-hover:block '>
                                 <div className='bg-gray-100 min-w-44 rounded flex flex-col gap-4 p-4'>
                                     <p onClick={() => navigate('/my-profile')} className='text-slate-500 hover:text-black cursor-pointer'>My Profile</p>
                                     <p onClick={() => navigate('/my-appointments')} className='text-slate-500 hover:text-black cursor-pointer'>My Appointments</p>
@@ -93,7 +97,7 @@ const Navbar = () => {
                             </div>
                         </div>
                         :
-                        <button onClick={() => navigate('/login')} className='cursor-pointer bg-primary px-5 py-2 text-whi rounded-full hover:bg-teal-800 hover:scale-105 transition-all duration-300'>Create Account</button>
+                        <button onClick={() => navigate('/login')} className='cursor-pointer flex items-center gap-2 bg-primary px-5 py-2 text-whi rounded-full hover:bg-teal-800 hover:scale-105 transition-all duration-300'><MdOutlineSupervisorAccount className='text-xl' /><span>Login</span></button>
                 }
                 {/* <button onClick={() => navigate('/login')} className='cursor-pointer'>Create Account</button> */}
                 <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />

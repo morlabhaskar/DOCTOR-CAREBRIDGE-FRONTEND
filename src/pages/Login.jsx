@@ -9,7 +9,7 @@ const Login = () => {
 
   const { backendUrl, token, setToken } = useContext(AppContext)
 
-  const [state, setState] = useState('Sign Up')
+  const [state, setState] = useState('login')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,7 +22,23 @@ const Login = () => {
 
     try {
 
-      if (state === 'Sign Up') {
+      if (state === 'login') {
+
+        
+
+
+        const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+        if (data.success) {
+          // toast.success(data.message)
+          localStorage.setItem('token', data.token)
+          setToken(data.token)
+        }
+        else {
+          toast.error(data.message)
+        }
+
+      }
+      else {
 
         const { data } = await axios.post(backendUrl + '/api/user/register', { name, email, password })
         if (data.success) {
@@ -35,18 +51,7 @@ const Login = () => {
           toast.error(data.message)
         }
 
-      }
-      else {
-
-        const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
-        if (data.success) {
-          // toast.success(data.message)
-          localStorage.setItem('token', data.token)
-          setToken(data.token)
-        }
-        else {
-          toast.error(data.message)
-        }
+        
 
       }
 

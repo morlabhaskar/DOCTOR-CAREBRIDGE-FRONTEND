@@ -165,7 +165,7 @@ const Appointment = () => {
       {/* Doctor Details */}
       <div className='flex flex-col sm:flex-row gap-4 mt-4'>
         <div>
-          <img className='bg-primary w-full sm:max-w-72 rounded-lg dark:bg-whi2' src={docInfo.image} alt="" />
+          <img className='w-full sm:max-w-72 min-h-64 max-h-64 min-w-44 max-w-44 border object-contain rounded-lg dark:bg-whi2' src={docInfo.image} alt="" />
         </div>
         <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0 dark:bg-dar'>
           {/* name,degree,experience */}
@@ -192,12 +192,12 @@ const Appointment = () => {
 
       {/* Booking Slots */}
 
-      <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
+      <div className='sm:ml-52 sm:pl-4 mt-4 font-medium text-gray-700'>
         <p className='dark:text-whi'>Booking Slots</p>
         <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
           {
             docSlots.length && docSlots.map((item, index) => (
-              <div key={index} onClick={() => setSlotIndex(index)} className={`text-center py-3 min-w-20 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-200 dark:text-whi2'}`}>
+              <div key={index} onClick={() => setSlotIndex(index)} className={`text-center py-3 min-w-20 rounded-tr-3xl rounded-bl-3xl cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-200 dark:text-whi2'}`}>
                 <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
                 <p>{item[0] && item[0].datetime.getDate()}</p>
               </div>

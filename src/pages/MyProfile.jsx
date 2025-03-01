@@ -196,13 +196,7 @@ const MyProfile = () => {
                   activeTab === 'profile' && (
                     <div className='flex-col gap-2 text-sm p-3  w-5/6 '>
 
-                      <div className='mb-2 flex justify-end'>
-                        {
-                          isEdit
-                            ? <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all dark:text-whi' onClick={updateUserProfileData}>Save</button>
-                            : <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all dark:text-whi' onClick={() => setIsEdit(true)}>Edit</button>
-                        }
-                      </div>
+                      
 
                       <div className='bg-red-200 relative'>
                         <img className='w-full h-48' src={darkMode ? assets.profilebg2 : assets.profilebg} alt="" />
@@ -225,23 +219,23 @@ const MyProfile = () => {
                       {
                         isEdit
                           ? <input className='bg-gray-50 text-3xl font-medium max-w-60 mt-10 p-1 outline-none dark:bg-gray-900 dark:text-whi rounded-r-lg' type="text" value={userData.name} onChange={e => setUserData(prev => ({ ...prev, name: e.target.value }))} />
-                          : <p className=' font-medium text-3xl text-neutral-800 mt-10 dark:text-whi flex items-center gap-2 justify-center'>
+                          : <p className=' font-medium text-3xl text-neutral-800 mt-10 dark:text-whi flex items-center gap-2 justify-start'>
                             <span>{userData.name}</span>
                             <BsPatchCheckFill className='text-xl text-blue-600 mt-1' />
                           </p>
                       }
 
-                      <div className='flex justify-center w-full '>
-                        <div className='grid grid-cols-[2fr_2fr] gap-y-2.5 mt-3  w-[70%] text-neutral-700'>
-                          <p className='font-medium dark:text-whi2 bg-slate-200 py-2 pl-3 rounded-l-full'>Email id</p>
-                          <p className='text-blue-500 bg-slate-200 py-2 rounded-r-full'>: {userData.email}</p>
-                          <p className='font-medium dark:text-whi2 bg-slate-200 py-2 pl-3 rounded-l-full'>Phone:</p>
+                      <div className='flex justify-start w-full '>
+                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 border-t border-r border-l rounded-t-3xl w-[50%] text-neutral-700'>
+                          <p className='font-medium dark:text-whi2  py-2 pl-3'>Email id</p>
+                          <p className='text-blue-500 py-2'>: {userData.email}</p>
+                          <p className='font-medium dark:text-whi2 pl-3 py-2'>Phone:</p>
                           {
                             isEdit
                               ? <input className='bg-gray-100 max-w-52 outline-none dark:bg-gray-900 p-1 rounded-r-lg dark:text-whi' type="number" value={userData.phone} onChange={e => setUserData(prev => ({ ...prev, phone: e.target.value }))} />
-                              : <p className='text-blue-400 bg-slate-200 py-2 rounded-r-full'>: {userData.phone}</p>
+                              : <p className='text-blue-400 py-2 '>: {userData.phone}</p>
                           }
-                          <p className='font-medium dark:text-whi2 bg-slate-200 py-2 pl-3 rounded-l-full'>Address</p>
+                          <p className='font-medium dark:text-whi2  py-2 pl-3'>Address</p>
                           {
                             isEdit
                               ? <p>
@@ -249,7 +243,7 @@ const MyProfile = () => {
 
                                 <input className='bg-gray-50 outline-none dark:bg-gray-900 p-1 rounded-br-lg dark:text-whi' value={userData.address.line2} onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} type="text" />
                               </p>
-                              : <p className='dark:text-whi2 bg-slate-200 py-2 flex gap-2 rounded-r-full'>:
+                              : <p className='dark:text-whi2 py-2 flex gap-2'>:
                                 <span>{userData.address.line1}</span>
 
                                 <span>{userData.address.line2}</span>
@@ -258,23 +252,30 @@ const MyProfile = () => {
                         </div>
                       </div>
 
-                      <div className='flex justify-center w-full '>
-                        <div className='grid grid-cols-[2fr_2fr] gap-y-2.5 mt-3 w-[70%] text-neutral-700'>
-                          <p className='font-medium dark:text-whi2 bg-slate-200 py-2 pl-3 rounded-l-full'>Gender</p>
+                      <div className='flex justify-start w-full '>
+                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 w-[50%] border-b border-r border-l rounded-b-3xl text-neutral-700'>
+                          <p className='font-medium dark:text-whi2 py-2 pl-3'>Gender</p>
                           {
                             isEdit
                               ? <select className='max-w-20 bg-gray-100 p-1 dark:bg-gray-900 dark:text-whi' value={userData.gender} onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))}>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                               </select>
-                              : <p className='text-dar bg-slate-200 py-2 rounded-r-full'>: {userData.gender}</p>
+                              : <p className='text-dar py-2 '>: {userData.gender}</p>
                           }
-                          <p className='font-medium dark:text-whi2 bg-slate-200 py-2 pl-3 rounded-l-full'>Birthday</p>
+                          <p className='font-medium dark:text-whi2 py-2 pl-3'>Birthday</p>
                           {
                             isEdit ? <input className='max-w-28 p-1 bg-gray-100 outline-none dark:bg-gray-800 dark:text-whi' type='date' value={userData.dob} onChange={(e) => setUserData(prev => ({ ...prev, dob: e.target.value }))} />
-                              : <p className='text-dar bg-slate-200 py-2 rounded-r-full'>: {userData.dob}</p>
+                              : <p className='text-dar py-2 '>: {userData.dob}</p>
                           }
                         </div>
+                      </div>
+                      <div className='mb-2 flex mt-4'>
+                        {
+                          isEdit
+                            ? <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all dark:text-whi' onClick={updateUserProfileData}>Save</button>
+                            : <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all dark:text-whi' onClick={() => setIsEdit(true)}>Edit</button>
+                        }
                       </div>
 
 
@@ -290,7 +291,7 @@ const MyProfile = () => {
                   activeTab === 'mystates' && (
                     <div className='flex-col gap-2 text-sm w-5/6 '>
                       <div className='md:flex p-2 gap-2'>
-                        <div className=' p-2 flex w-full items-center h-[300px] dark:bg-slate-700 rounded-2xl'>
+                        <div className=' p-2 flex w-full items-center h-[300px] mb-3 dark:bg-slate-700 rounded-2xl'>
                           <BarChart className=''
                             xAxis={[{
                               scaleType: 'band',

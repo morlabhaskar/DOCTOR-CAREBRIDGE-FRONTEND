@@ -1,6 +1,8 @@
 import appointment_img from './appointment_img.png'
 import header_img from './header_img.png'
 import header2_img from './header2_img.jpg'
+import header3 from './header3.avif'
+import header_web from './header_web.webp'
 import login_banner from './login-banner.png'
 import google from './google-icon.svg'
 import logo1 from './logo.png'
@@ -78,7 +80,9 @@ export const assets = {
     login_banner,
     google,
     profilebg,
-    profilebg2
+    profilebg2,
+    header3,
+    header_web
 }
 
 export const specialityData = [

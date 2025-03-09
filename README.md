@@ -31,24 +31,24 @@ CareBridge is a full-stack MERN (MongoDB, Express.js, React.js, Node.js) applica
 - JWT authentication
 - API endpoints for user and appointment management
 
-  Installation
+# Installation
 
-Prerequisites:
+### Prerequisites:
 
 Ensure you have the following installed:
 
 - Node.js (latest LTS version)
 - MongoDB
 
-  Steps to Run Locally:
+## Steps to Run Locally:
 
-Clone the repository:
+### Clone the repository:
 ```
 git clone https://github.com/yourusername/carebridge.git
 cd carebridge
 ```
 
-Install dependencies:
+### Install dependencies:
 
 Backend:
 ```
@@ -61,7 +61,7 @@ cd ../frontend
 npm install
 ```
 
-Setup Environment Variables:
+### Setup Environment Variables:
 
 Create a ```.env``` file in the backend directory and add:
 ```
@@ -75,7 +75,7 @@ For the frontend, set the backend URL in ```.env```:
 VITE_BACKEND_URL=http://localhost:4000
 ```
 
-Start the Application:
+### Start the Application:
 
 Backend:
 ```

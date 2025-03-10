@@ -105,7 +105,7 @@ const Doctors = () => {
         <img className='h-72' src={assets.nodata} alt="" />
       </div>
       ) : (
-        <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
+        <div className='md:w-full w-[70%] m-auto grid grid-cols-auto gap-4 gap-y-6'>
           {filterDoc.map((item, index) => (
             <div key={index} onClick={() => navigate(`/appointment/${item._id}`)} 
               className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500'>
@@ -141,11 +141,11 @@ const Doctors = () => {
         <div className=''>
           {filterDoc.map((item, index) => (
             <div key={index} className='flex my-2 bg-whi dark:bg-dar rounded-lg'>
-              <img className='min-h-48 max-h-48 min-w-40 max-w-40 object-contain border border-slate-600 rounded-l-lg dark:border-slate-300' src={item.image} alt="" />
-              <div className='w-full border-2 rounded-r-lg max-h-48 flex flex-col '>
-                <div className='p-4 w-full flex flex-col gap-1'>
+              <img className='md:min-h-48 md:max-h-48 md:min-w-40 md:max-w-40 min-h-40 max-h-40 min-w-32 max-w-32 object-contain border border-slate-600 rounded-l-lg dark:border-slate-300' src={item.image} alt="" />
+              <div className='w-full border-2 rounded-r-lg md:max-h-48 max-h-40 flex flex-col justify-between'>
+                <div className='p-2 md:p-4 w-full flex flex-col gap-1'>
                   <div className='flex justify-between mx-2 items-center'>
-                    <p className='text-gray-900 text-3xl font-medium dark:text-whi'>{item.name}</p>
+                    <p className='text-gray-900 md:text-3xl text-lg font-medium dark:text-whi'>{item.name}</p>
                     <div className='flex items-center gap-2 text-sm text-center'>
                       {item.available ? (
                         <p className='flex items-center gap-2 text-green-500'>
@@ -158,17 +158,17 @@ const Doctors = () => {
                       )}
                     </div>
                   </div>
-                  <p className='text-gray-600 text-lg dark:text-whi2 flex items-center gap-2'>
-                    <span><HiAcademicCap className='text-dar dark:text-whi text-xl' /></span>
+                  <p className='text-gray-600 md:text-lg text-sm dark:text-whi2 flex items-center gap-2'>
+                    <span><HiAcademicCap className='text-dar dark:text-whi md:text-xl text-lg' /></span>
                     <span>{item.degree}</span>
                   </p>
-                  <p className='text-gray-600 text-lg dark:text-whi2 flex items-center gap-2'>
-                    <span><IoBagAdd className='text-dar dark:text-whi text-xl' /></span>
+                  <p className='text-gray-600 md:text-lg text-sm dark:text-whi2 flex items-center gap-2'>
+                    <span><IoBagAdd className='text-dar dark:text-whi md:text-xl text-lg' /></span>
                     <span>{item.experience} Experience</span>
                   </p>
                 </div>
                 <div className='flex justify-end mx-2'>
-                  <button className='border rounded-lg bg-teal-600 mt-2 text-whi hover:bg-teal-800 hover:scale-105 transition-all duration-300 border-none px-3 py-1'>Book Appointment</button>
+                  <button className='border rounded-lg bg-teal-600 mb-2 text-sm md:text-lg text-whi hover:bg-teal-800 hover:scale-105 transition-all duration-300 border-none px-3 py-1' onClick={() => navigate(`/appointment/${item._id}`)} >Book Appointment</button>
                 </div>
               </div>
             </div>

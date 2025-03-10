@@ -17,22 +17,22 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-whi">Specialities</h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline dark:text-whi2">General physician</a>
+                  <a href="" className="hover:underline dark:text-whi2">General physician</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Gynecologist</a>
+                  <a href="" className="hover:underline dark:text-whi2">Gynecologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Dermatologist</a>
+                  <a href="" className="hover:underline dark:text-whi2">Dermatologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Pediatricians</a>
+                  <a href="" className="hover:underline dark:text-whi2">Pediatricians</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Neurologist</a>
+                  <a href="" className="hover:underline dark:text-whi2">Neurologist</a>
                 </li>
                 <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline dark:text-whi2">Gastroenterologist</a>
+                  <a href="" className="hover:underline dark:text-whi2">Gastroenterologist</a>
                 </li>
               </ul>
             </div>

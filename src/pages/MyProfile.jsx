@@ -114,7 +114,7 @@ const MyProfile = () => {
     march: { label: "Dermatologist", color: "#4631C3" },
     april: { label: "Pediatricians", color: "#D03464" },
     may: { label: "Neurologist", color: "#B45CB5" },
-    may: { label: "Gastroenterologist", color: "#F27543" },
+    june: { label: "Gastroenterologist", color: "#F27543" },
   };
 
   const id = "pie-interactive";
@@ -226,7 +226,7 @@ const MyProfile = () => {
                       }
 
                       <div className='flex justify-start w-full '>
-                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 border-t border-r border-l rounded-t-3xl w-[50%] text-neutral-700'>
+                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 md:border-t md:border-r md:border-l rounded-t-3xl w-[50%] text-neutral-700'>
                           <p className='font-medium dark:text-whi2  py-2 pl-3'>Email id</p>
                           <p className='text-blue-500 py-2'>: {userData.email}</p>
                           <p className='font-medium dark:text-whi2 pl-3 py-2'>Phone:</p>
@@ -245,7 +245,6 @@ const MyProfile = () => {
                               </p>
                               : <p className='dark:text-whi2 py-2 flex gap-2'>:
                                 <span>{userData.address.line1}</span>
-
                                 <span>{userData.address.line2}</span>
                               </p>
                           }
@@ -253,7 +252,7 @@ const MyProfile = () => {
                       </div>
 
                       <div className='flex justify-start w-full '>
-                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 w-[50%] border-b border-r border-l rounded-b-3xl text-neutral-700'>
+                        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 w-[50%] md:border-b md:border-r md:border-l rounded-b-3xl text-neutral-700'>
                           <p className='font-medium dark:text-whi2 py-2 pl-3'>Gender</p>
                           {
                             isEdit

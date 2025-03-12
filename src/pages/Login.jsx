@@ -98,7 +98,7 @@ const Login = () => {
           <p className='mb-[1px]'>or</p>
           <p className='min-h-[2px] max-h-[2px] min-w-[40%] bg-fuchsia-500'></p>
         </div>
-        <button type='submit' className='text-dar w-full py-2 hover:bg-slate-200 flex border border-dar2 justify-center items-center gap-2 rounded-full text-base hover:scale-105 transition-all duration-300'><img src={assets.google} alt="" /><p>Sign in With Google</p></button>
+        <a href='' className='text-dar w-full py-2 hover:bg-slate-200 flex border border-dar2 justify-center items-center gap-2 rounded-full text-base hover:scale-105 transition-all duration-300'><img src={assets.google} alt="" /><p>Sign in With Google</p></a>
         {
           state === "Sign Up"
             ? <p className='w-full flex justify-center'>Already have an account? <span onClick={() => setState('Login')} className='text-primary underline cursor-pointer'>Login here</span></p>
